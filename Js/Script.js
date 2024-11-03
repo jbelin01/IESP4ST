@@ -1,4 +1,12 @@
-document.getElementById("search").addEventListener("click", async () => {
+document.getElementById("search").addEventListener("click", searchCity);
+document.getElementById("city-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Evita comportamento padrão do Enter
+        searchCity();
+    }
+});
+
+async function searchCity() {
     const city = document.getElementById("city-input").value.trim().toUpperCase();
     const mapElement = document.getElementById("map");
 
@@ -7,7 +15,6 @@ document.getElementById("search").addEventListener("click", async () => {
         return;
     }
 
- 
     async function carregarDados() {
         try {
             const resposta = await fetch("D.SDA.PDA.005.CAT.202409.json");
@@ -19,24 +26,20 @@ document.getElementById("search").addEventListener("click", async () => {
         }
     }
 
-   
     const dados = await carregarDados();
     console.log("Dados carregados:", dados);
 
-   
     const registrosFiltrados = dados.filter(registro =>
         registro.node["Munic Empr"] && registro.node["Munic Empr"].toUpperCase().includes(city)
     );
 
     console.log("Registros filtrados:", registrosFiltrados);
 
-    
     if (registrosFiltrados.length === 0) {
         mapElement.innerHTML = `<p>Nenhum dado encontrado para a cidade: ${city}</p>`;
         return;
     }
 
-    
     let htmlContent = `<h3>Dados de Acidentes para ${city} - Total: ${registrosFiltrados.length}</h3><ul>`;
     registrosFiltrados.forEach(registro => {
         htmlContent += `
@@ -51,19 +54,4 @@ document.getElementById("search").addEventListener("click", async () => {
     htmlContent += `</ul>`;
 
     mapElement.innerHTML = htmlContent;
-});
-
-function showHistogram() {
-    document.getElementById("chart-container").innerHTML = "<h3>Exibindo Histograma</h3><canvas id='histogramChart'></canvas>";
-    
-}
-
-function showHeatmap() {
-    document.getElementById("chart-container").innerHTML = "<h3>Exibindo Mapa de Calor</h3><div id='heatmap'></div>";
-
-}
-
-function showOther() {
-    document.getElementById("chart-container").innerHTML = "<h3>Exibindo Outro Gráfico</h3><canvas id='otherChart'></canvas>";
-    
 }
