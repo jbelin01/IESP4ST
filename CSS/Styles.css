@@ -56,11 +56,15 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    width: 100%;
+    
 }
 
 .form-input-container input {
     padding: 10px;
     font-size: 1em;
+    border-radius: 5px;
+    width: 29%;
 }
 
 .form-input-container button {
@@ -70,6 +74,8 @@ body {
     padding: 10px;
     font-size: 1em;
     cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
 }
 
 .report-section {
