@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.logo-img {
+    height: 50px; /* Ajuste conforme o tamanho desejado */
+    width: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+}
+
+.navbar nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.intro {
+    text-align: center;
+    padding: 20px;
+    background-color: #2c7a7b;
+    color: #fff;
+}
+
+.intro img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.search-section {
+    text-align: center;
+    margin: 20px;
+}
+
+.form-input-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.form-input-container input {
+    padding: 10px;
+    font-size: 1em;
+}
+
+.form-input-container button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.report-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #dde1e7;
+}
+
+.report-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.report-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.report-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #5ba9c9;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.map {
+    height: 400px;
+    margin: 20px auto;
+    width: 80%;
+    background-color: #ccc;
+}
