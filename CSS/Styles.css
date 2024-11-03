@@ -1,3 +1,4 @@
+/* Estilos básicos */
 * {
     padding: 0;
     margin: 0;
@@ -7,10 +8,12 @@
 body {
     background-color: #e0e0e0;
     color: #333;
+    line-height: 1.6;
 }
 
+/* Estilos para a barra de navegação */
 .logo-img {
-    height: 50px; /* Ajuste conforme o tamanho desejado */
+    height: 50px;
     width: auto;
 }
 
@@ -31,8 +34,14 @@ body {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
+    font-weight: bold;
 }
 
+.navbar nav a:hover {
+    text-decoration: underline;
+}
+
+/* Seção de introdução */
 .intro {
     text-align: center;
     padding: 20px;
@@ -47,6 +56,7 @@ body {
     margin-bottom: 15px;
 }
 
+/* Seção de pesquisa */
 .search-section {
     text-align: center;
     margin: 20px;
@@ -63,54 +73,80 @@ body {
 .form-input-container input {
     padding: 10px;
     font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 300px;
     border-radius: 5px;
     width: 29%;
+
 }
 
 .form-input-container button {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+    border-radius: 4px;
     margin-left: 10px;
     border-radius: 10px;
+
 }
 
-.report-section {
-    text-align: center;
+.form-input-container button:hover {
+    background-color: #45a049;
+}
+
+
+/* Estilos para a seção de resultados */
+#map {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
-    background-color: #dde1e7;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Esconde o excesso de conteúdo fora do contêiner */
 }
 
-.report-section h2 {
-    font-size: 1.5em;
+/* Contêiner para a lista com sistema de rolagem */
+#map ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 400px; /* Altura máxima do contêiner */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+}
+
+#map li {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#map li strong {
+    color: #4CAF50;
+}
+
+#map li:not(:last-child) {
     margin-bottom: 15px;
 }
 
-.report-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-    
-}
-
-.report-btn {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #5ba9c9;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    margin: 0 10px;
-}
-
+/* Estilos para o mapa */
 .map {
     height: auto;
     margin: 20px auto;
     width: 80%;
     background-color: #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
 }
@@ -179,4 +215,5 @@ body {
 .footer-logo img {
     max-width: 10%;
     opacity: 0.1; 
+
 }
