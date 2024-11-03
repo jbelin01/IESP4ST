@@ -86,16 +86,18 @@ body {
 .report-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 200px;
+    
 }
 
 .report-btn {
     padding: 10px 20px;
     font-size: 1em;
     background-color: #5ba9c9;
-    border: none;
+    border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin: 0 10px;
 }
 
 .map {
