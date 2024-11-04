@@ -15,13 +15,29 @@ async function searchCity() {
         return;
     }
 
+    // Função para carregar múltiplos arquivos JSON
     async function carregarDados() {
+        const arquivos = [
+            "dados/D.SDA.PDA.005.CAT.202409.json",
+            "dados/D.SDA.PDA.005.CAT.202408.json", // Adicione mais arquivos aqui
+            "dados/D.SDA.PDA.005.CAT.202407.json",
+            "dados/D.SDA.PDA.005.CAT.202406.json",
+            "dados/D.SDA.PDA.005.CAT.202405.json",
+            "dados/D.SDA.PDA.005.CAT.202404.json",
+            "dados/D.SDA.PDA.005.CAT.202403.json",
+            "dados/D.SDA.PDA.005.CAT.202402.json",
+            "dados/D.SDA.PDA.005.CAT.202401.json"
+        ];
+
         try {
-            const resposta = await fetch("D.SDA.PDA.005.CAT.202409.json");
-            const dados = await resposta.json();
-            return dados.nodes || []; // Certifique-se de acessar o array correto
+            // Use Promise.all para carregar todos os arquivos simultaneamente
+            const respostas = await Promise.all(arquivos.map(arquivo => fetch(arquivo).then(res => res.json())));
+            
+            // Combine todos os dados de cada resposta
+            const todosOsDados = respostas.flatMap(resposta => resposta.nodes || []);
+            return todosOsDados;
         } catch (erro) {
-            console.error("Erro ao carregar o arquivo JSON:", erro);
+            console.error("Erro ao carregar os arquivos JSON:", erro);
             return [];
         }
     }

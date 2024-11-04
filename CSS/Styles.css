@@ -1,14 +1,22 @@
-/* Estilos básicos */
 * {
     padding: 0;
     margin: 0;
     font-family: "Ubuntu", sans-serif;
+    box-sizing: border-box; /* Garante que o espaçamento seja incluído no tamanho total */
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #e0e0e0;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+
+main {
+    flex: 2;
 }
 
 /* Estilos para a barra de navegação */
@@ -24,6 +32,7 @@ body {
     background-color: #333;
     color: #fff;
     padding: 10px 20px;
+    border-bottom: 3px;
 }
 
 .navbar .logo {
@@ -45,8 +54,9 @@ body {
 .intro {
     text-align: center;
     padding: 20px;
-    background-color: #2c7a7b;
+    background-color: #042a59;
     color: #fff;
+    border-top: 5px;
 }
 
 .intro img {
@@ -83,25 +93,26 @@ body {
 }
 
 .form-input-container button {
-    background-color: #4CAF50;
+    background-color: #ff0000;
     border: none;
     color: white;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 10px;
     margin-left: 10px;
     border-radius: 10px;
 
 }
 
 .form-input-container button:hover {
-    background-color: #45a049;
+    background-color: #d62626;
 }
 
 
 /* Estilos para a seção de resultados */
 #map {
+    min-height: 800px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -114,12 +125,12 @@ body {
     overflow: hidden; /* Esconde o excesso de conteúdo fora do contêiner */
 }
 
-/* Contêiner para a lista com sistema de rolagem */
+
 #map ul {
     list-style-type: none;
     padding: 0;
-    max-height: 400px; /* Altura máxima do contêiner */
-    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+    max-height: 400px; 
+    overflow-y: auto; 
 }
 
 #map li {
@@ -160,60 +171,80 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 700px;
 }
 
 .footer {
     background-color: #333;
     color: #fff;
-    padding: 30px 0;
+    padding: 3px 0;
     text-align: center;
+    width: 100%;
 }
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2px 0;
+    flex-wrap: wrap;
+    gap: 2px;
 }
 
 .footer-section {
     flex: 1;
-    min-width: 200px;
-    padding: 10px 20px;
+    min-width: 150px;
+    padding: 2px 0;
 }
 
-.footer-section h3 {
-    font-size: 1.2em;
-    margin-bottom: 15px;
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 2px;
+    padding: 2px;
+}
+
+.footer-section ul li a {
     color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.footer-section p, .footer-section ul, .footer-section ul li a {
-    color: #ccc;
-    font-size: 0.9em;
-    line-height: 1.6;
+.footer-section ul li a:hover {
+    color: #ff0000;
+    text-decoration: underline;
 }
 
 .footer-bottom {
     background-color: #222;
     color: #aaa;
-    padding: 10px 0;
+    padding: 10px;
     font-size: 0.8em;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
     text-align: center;
 }
 
 .footer-logo {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    height: 100%;
+    margin-left: 10px;
 }
 
 .footer-logo img {
-    max-width: 10%;
-    opacity: 0.1; 
+    height: 40px; /* Ajuste a altura da imagem para reduzir o espaço ocupado */
+}
 
+.footer-section ul {
+    list-style: none;
+    padding: 0;
 }
