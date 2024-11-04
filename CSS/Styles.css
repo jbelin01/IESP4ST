@@ -129,7 +129,7 @@ main {
 #map ul {
     list-style-type: none;
     padding: 0;
-    max-height: 400px; 
+    max-height: 800px; 
     overflow-y: auto; 
 }
 
