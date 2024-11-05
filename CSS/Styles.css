@@ -195,7 +195,7 @@ main {
 .footer-section {
     flex: 1;
     min-width: 150px;
-    padding: 2px 0;
+    padding: 0px 0;
 }
 
 .footer-section ul {
@@ -205,7 +205,7 @@ main {
 }
 
 .footer-section ul li {
-    margin-bottom: 2px;
+    margin-bottom: 0px;
     padding: 2px;
 }
 
@@ -221,15 +221,14 @@ main {
 }
 
 .footer-bottom {
-    background-color: #222;
     color: #aaa;
-    padding: 10px;
+    padding: 5px;
     font-size: 0.8em;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: auto;
+   
     text-align: center;
 }
 
