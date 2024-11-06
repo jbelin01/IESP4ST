@@ -31,8 +31,18 @@ async function searchCity() {
 
         try {
             // Use Promise.all para carregar todos os arquivos simultaneamente
-            const respostas = await Promise.all(arquivos.map(arquivo => fetch(arquivo).then(res => res.json())));
-            
+            const respostas = await Promise.all(arquivos.map(async (arquivo) => {
+                const response = await fetch(arquivo);
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar o arquivo: ${arquivo}`);
+                }
+                try {
+                    return await response.json();
+                } catch (jsonError) {
+                    throw new Error(`Erro ao analisar JSON do arquivo: ${arquivo}`);
+                }
+            }));
+
             // Combine todos os dados de cada resposta
             const todosOsDados = respostas.flatMap(resposta => resposta.nodes || []);
             return todosOsDados;
@@ -40,6 +50,12 @@ async function searchCity() {
             console.error("Erro ao carregar os arquivos JSON:", erro);
             return [];
         }
+    }
+
+    // Função para corrigir caracteres mal formatados
+    function corrigirTexto(texto) {
+        if (!texto) return "Não especificado";
+        return texto.replace(/�/g, "").trim(); // Substitui caracteres estranhos e remove espaços extras
     }
 
     const dados = await carregarDados();
@@ -58,12 +74,17 @@ async function searchCity() {
 
     let htmlContent = `<h3>Dados de Acidentes para ${city} - Total: ${registrosFiltrados.length}</h3><ul>`;
     registrosFiltrados.forEach(registro => {
+        const dataAcidente = registro.node["Data Acidente"] || "Data não disponível";
+        const sexo = corrigirTexto(registro.node["Sexo"]);
+        const parteCorpoAtingida = corrigirTexto(registro.node["Parte Corpo Atingida"]);
+        const origemCadastramento = corrigirTexto(registro.node["Origem de Cadastramento CAT"]);
+
         htmlContent += `
             <li>
-                <strong>Data do Acidente:</strong> ${registro.node["Data Acidente"]}<br>
-                <strong>Natureza da Lesão:</strong> ${registro.node["Natureza da Lesão"]}<br>
-                <strong>Parte do Corpo Atingida:</strong> ${registro.node["Parte Corpo Atingida"]}<br>
-                <strong>Tipo do Acidente:</strong> ${registro.node["Tipo do Acidente"]}
+                <strong>Data do Acidente:</strong> ${dataAcidente}<br>
+                <strong>Sexo:</strong> ${sexo}<br>
+                <strong>Parte do Corpo Atingida:</strong> ${parteCorpoAtingida}<br>
+                <strong>Origem de Cadastramento CAT:</strong> ${origemCadastramento}
             </li>
         `;
     });
